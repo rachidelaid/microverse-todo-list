@@ -7,7 +7,7 @@ const listParent = document.querySelector('.list');
 const addBtn = document.querySelector('#add');
 const input = document.querySelector('.input');
 
-const tasks = localStorage.getItem('tasks')
+let tasks = localStorage.getItem('tasks')
   ? JSON.parse(localStorage.getItem('tasks'))
   : [];
 
@@ -70,6 +70,7 @@ function render() {
       const id = Number(delBtn.parentNode.parentNode.id.split('-')[1]);
 
       deleteTask(tasks, id);
+      tasks = JSON.parse(localStorage.getItem('tasks'));
       delBtn.parentNode.parentNode.remove();
     });
   });
