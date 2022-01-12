@@ -44,6 +44,10 @@ li {
   color: orange;
 }
 
+.drag {
+  cursor: move;
+}
+
 .active .drag {
   display: none;
 }
@@ -68,10 +72,6 @@ li {
 
 .check:checked + .input {
   text-decoration: line-through;
-}
-
-.drag {
-  cursor: move;
 }
 
 .clear {

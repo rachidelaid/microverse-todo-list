@@ -34,10 +34,8 @@ function render() {
   const lis = document.querySelectorAll('li');
   lis.forEach((li) => {
     li.addEventListener('click', (e) => {
-      if (
-        e.target.classList.contains('drag') ||
-        e.target.classList.contains('check')
-      ) {
+      const elm = e.target;
+      if (elm.classList.contains('drag') || elm.classList.contains('check')) {
         return;
       }
 
