@@ -8,9 +8,9 @@ function getDragAfterElm(y) {
 
       if (offset < 0 && offset > closest.offset) {
         return { offset, element: child };
-      } else {
-        return closest;
       }
+
+      return closest;
     },
     { offset: Number.NEGATIVE_INFINITY }
   ).element;
