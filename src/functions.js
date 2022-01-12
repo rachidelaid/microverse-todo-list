@@ -26,7 +26,7 @@ function deleteTask(tasks, index) {
   tasks = tasks.filter((t) => t.index !== index);
   tasks = tasks.map((t) => {
     if (t.index > index) {
-      t.index = t.index - 1;
+      t.index -= 1;
     }
     return t;
   });
