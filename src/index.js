@@ -1,24 +1,24 @@
 import 'material-icons/iconfont/material-icons.css';
 import './style.css';
 
-import { addTask, updateTask, deleteTask } from './functions';
+import Tasks from './class';
+import handleDrag from './dragging';
 
 const listParent = document.querySelector('.list');
+const clearAll = document.querySelector('.clear');
 const addBtn = document.querySelector('#add');
 const input = document.querySelector('.input');
 
-let tasks = localStorage.getItem('tasks')
-  ? JSON.parse(localStorage.getItem('tasks'))
-  : [];
+const tasks = new Tasks();
 
 function render() {
   listParent.innerHTML = '';
 
-  tasks
+  tasks.list
     .sort((a, b) => a.index - b.index)
     .forEach((t) => {
       listParent.innerHTML += `
-      <li id="task-${t.index}">
+      <li id="task-${t.index}" draggable="true">
         <div class="content">
           <input class="check" type="checkbox" ${t.completed ? 'checked' : ''}/>
           <input class="input" type="text" value='${t.description}' readonly />
@@ -54,14 +54,28 @@ function render() {
       if (e.key === 'Enter') {
         const id = Number(inp.parentNode.parentNode.id.split('-')[1]);
 
-        const obj = tasks.find((t) => t.index === id);
+        const obj = tasks.list.find((t) => t.index === id);
 
         obj.description = inp.value.trim();
 
-        updateTask(tasks, obj);
+        tasks.edit(obj);
+
+        inp.parentNode.parentNode.classList.remove('active');
 
         inp.readOnly = true;
       }
+    });
+  });
+
+  document.querySelectorAll('li .check').forEach((inp) => {
+    inp.addEventListener('change', () => {
+      const id = Number(inp.parentNode.parentNode.id.split('-')[1]);
+
+      const obj = tasks.list.find((t) => t.index === id);
+
+      obj.completed = inp.checked;
+
+      tasks.edit(obj);
     });
   });
 
@@ -69,8 +83,7 @@ function render() {
     delBtn.addEventListener('click', () => {
       const id = Number(delBtn.parentNode.parentNode.id.split('-')[1]);
 
-      deleteTask(tasks, id);
-      tasks = JSON.parse(localStorage.getItem('tasks'));
+      tasks.remove(id);
       delBtn.parentNode.parentNode.remove();
     });
   });
@@ -78,10 +91,26 @@ function render() {
 
 render();
 
+function addTask() {
+  tasks.add({
+    description: input.value.trim(),
+  });
+
+  input.value = '';
+
+  render();
+}
+
 addBtn.addEventListener('click', addTask);
 input.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
-    addTask(tasks, input);
-    render();
+    addTask();
   }
 });
+
+clearAll.addEventListener('click', () => {
+  tasks.clearCompleted();
+  render();
+});
+
+handleDrag(tasks);

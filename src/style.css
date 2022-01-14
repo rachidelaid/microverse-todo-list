@@ -84,3 +84,8 @@ span:hover,
 .clear:hover {
   color: #000;
 }
+
+.dragging {
+  transform: scale(0.9);
+  border: 1px dashed #505050;
+}
