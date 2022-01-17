@@ -15,6 +15,11 @@ body {
   color: #505050;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+}
+
 .dele {
   display: none;
 }

@@ -12,10 +12,18 @@
         <span class="material-icons">autorenew</span>
       </div>
       <div class="table">
-        <div class="add">
-          <input class="input" type="text" placeholder="Add to your list" />
-          <span class="material-icons" id="add">keyboard_return</span>
-        </div>
+        <form class="add">
+          <input
+            class="input"
+            id="input"
+            type="text"
+            placeholder="Add to your list"
+            required
+          />
+          <button type="submit" id="add">
+            <span class="material-icons">keyboard_return</span>
+          </button>
+        </form>
         <ul class="list"></ul>
       </div>
       <div class="clear">Clear all completed</div>

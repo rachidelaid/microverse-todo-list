@@ -6,8 +6,7 @@ import handleDrag from './dragging';
 
 const listParent = document.querySelector('.list');
 const clearAll = document.querySelector('.clear');
-const addBtn = document.querySelector('#add');
-const input = document.querySelector('.input');
+const form = document.querySelector('form');
 
 const tasks = new Tasks();
 
@@ -92,25 +91,20 @@ function render() {
 
 render();
 
-function addTask() {
-  tasks.add({
-    description: input.value.trim(),
-  });
-
-  input.value = '';
-
-  render();
-}
-
-addBtn.addEventListener('click', addTask);
-input.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    addTask();
-  }
-});
-
 clearAll.addEventListener('click', () => {
   tasks.clearCompleted();
+  render();
+});
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  tasks.add({
+    description: form.elements['input'].value.trim(),
+  });
+
+  form.reset();
+
   render();
 });
 
