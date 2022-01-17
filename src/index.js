@@ -50,20 +50,21 @@ function render() {
   });
 
   document.querySelectorAll('li .input').forEach((inp) => {
-    inp.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        const id = Number(inp.parentNode.parentNode.id.split('-')[1]);
-
-        const obj = tasks.list.find((t) => t.index === id);
-
-        obj.description = inp.value.trim();
-
-        tasks.edit(obj);
-
+    inp.addEventListener('focusout', (e) => {
+      setTimeout(() => {
         inp.parentNode.parentNode.classList.remove('active');
 
         inp.readOnly = true;
-      }
+      }, 200);
+    });
+    inp.addEventListener('input', () => {
+      const id = Number(inp.parentNode.parentNode.id.split('-')[1]);
+
+      const obj = tasks.list.find((t) => t.index === id);
+
+      obj.description = inp.value.trim();
+
+      tasks.edit(obj);
     });
   });
 
