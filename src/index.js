@@ -50,7 +50,7 @@ function render() {
   });
 
   document.querySelectorAll('li .input').forEach((inp) => {
-    inp.addEventListener('focusout', (e) => {
+    inp.addEventListener('focusout', () => {
       setTimeout(() => {
         inp.parentNode.parentNode.classList.remove('active');
 
