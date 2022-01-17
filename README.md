@@ -3,12 +3,18 @@
 this is a minimalist ToDo list app, to add, update and remove tasks easily.
 right now you can't do anything, but by the end of this week it will be fully functional.
 
+![screenshot](./screenshot.png)
+
 ## Built using
 
 - HTML
 - CSS
 - JavaScript
 - Webpack
+
+## Live link
+
+[https://microverse-todo-list.netlify.app/](https://microverse-todo-list.netlify.app/)
 
 ## Usage
 
