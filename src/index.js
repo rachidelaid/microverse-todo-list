@@ -108,7 +108,7 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   tasks.add({
-    description: form.elements['input'].value.trim(),
+    description: form.elements.input.value.trim(),
   });
   saveTasks();
 

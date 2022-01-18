@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do list</title>
+  <script defer src="bundle.js"></script></head>
+  <body>
+    <main>
+      <div class="head">
+        <h2>Today's To Do</h2>
+        <span class="material-icons">autorenew</span>
+      </div>
+      <div class="table">
+        <form class="add">
+          <input
+            class="input"
+            id="input"
+            type="text"
+            placeholder="Add to your list"
+            required
+          />
+          <button type="submit" id="add">
+            <span class="material-icons">keyboard_return</span>
+          </button>
+        </form>
+        <ul class="list"></ul>
+      </div>
+      <div class="clear">Clear all completed</div>
+    </main>
+  </body>
+</html>
