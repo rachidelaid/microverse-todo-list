@@ -8,9 +8,13 @@ const listParent = document.querySelector('.list');
 const clearAll = document.querySelector('.clear');
 const form = document.querySelector('form');
 
-const tasks = new Tasks();
+const tasks = new Tasks(localStorage.getItem('tasks'));
 
-function render() {
+const saveTasks = () => {
+  localStorage.setItem('tasks', JSON.stringify(tasks.list));
+};
+
+const render = () => {
   listParent.innerHTML = '';
 
   tasks.list
@@ -64,6 +68,7 @@ function render() {
       obj.description = inp.value.trim();
 
       tasks.edit(obj);
+      saveTasks();
     });
   });
 
@@ -76,6 +81,7 @@ function render() {
       obj.completed = inp.checked;
 
       tasks.edit(obj);
+      saveTasks();
     });
   });
 
@@ -84,15 +90,17 @@ function render() {
       const id = Number(delBtn.parentNode.parentNode.id.split('-')[1]);
 
       tasks.remove(id);
+      saveTasks();
       delBtn.parentNode.parentNode.remove();
     });
   });
-}
+};
 
 render();
 
 clearAll.addEventListener('click', () => {
   tasks.clearCompleted();
+  saveTasks();
   render();
 });
 
@@ -102,6 +110,7 @@ form.addEventListener('submit', (e) => {
   tasks.add({
     description: form.elements['input'].value.trim(),
   });
+  saveTasks();
 
   form.reset();
 
