@@ -22,3 +22,27 @@ describe('testing delete', () => {
     expect(tasks.list.length).toBe(1);
   });
 });
+
+describe('testing edit', () => {
+  const tasks = new Tasks();
+  tasks.add({ description: 'task 1' });
+  const currentTask = tasks.list[0];
+  currentTask.description = 'Edited description';
+  tasks.edit(currentTask);
+
+  it('Checking if the list is edited with new description', () => {
+    expect(tasks.list[0].description).toBe('Edited description');
+  });
+});
+
+describe('testing cpmpleted tasks', () => {
+  const tasks = new Tasks();
+  tasks.add({ description: 'new task' });
+  const currentTask = tasks.list[0];
+  currentTask.completed = true;
+  tasks.edit(currentTask);
+
+  it('Checking if tasks completed is true', () => {
+    expect(tasks.list[0].completed).toBeTruthy();
+  });
+});
