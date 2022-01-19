@@ -1,5 +1,35 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import Tasks from './class';
 import LocalStorage from './local-storage-mock';
+import render from './render';
+
+document.body.innerHTML = `
+  <main>
+    <div class="head">
+      <h2>Today's To Do</h2>
+      <span class="material-icons">autorenew</span>
+    </div>
+    <div class="table">
+      <form class="add">
+        <input
+          class="input"
+          id="input"
+          type="text"
+          placeholder="Add to your list"
+          required
+        />
+        <button type="submit" id="add">
+          <span class="material-icons">keyboard_return</span>
+        </button>
+      </form>
+      <ul class="list"></ul>
+    </div>
+    <div class="clear">Clear all completed</div>
+  </main>
+`;
 
 global.localStorage = new LocalStorage();
 
@@ -78,5 +108,49 @@ describe('testing localStorage', () => {
   it('checking if local storage is not empty after adding', () => {
     tasks.add({ description: 'task 1' });
     expect(localStorage.getItem('tasks')).not.toBeNull();
+  });
+});
+
+describe('testing DOM manipulation functions', () => {
+  localStorage.clear();
+  const tasks = new Tasks();
+
+  it('we should see one li in the list after adding', () => {
+    tasks.add({ description: 'task 1' });
+    render(tasks);
+
+    expect(document.querySelectorAll('li').length).toBe(1);
+  });
+
+  it('the task description should change on the page after update', () => {
+    const currentTask = tasks.list[0];
+    currentTask.description = 'task 2';
+    tasks.edit(currentTask);
+    render(tasks);
+
+    expect(document.querySelector('li .input').value).toBe('task 2');
+  });
+
+  it('the complete should be true after we click the checkbox', () => {
+    document.querySelector('li .check').click();
+    console.log(tasks.list);
+
+    expect(tasks.list[0].completed).toBeTruthy();
+  });
+
+  it('the li count should be 1 after removing the second task', () => {
+    tasks.add({ description: 'last task' });
+    render(tasks);
+
+    document.querySelectorAll('li .dele')[1].click();
+
+    expect(document.querySelectorAll('li').length).toBe(1);
+  });
+
+  it('because the only task left is complete, the list should be empty after clearing all completed', () => {
+    tasks.clearCompleted();
+    render(tasks);
+
+    expect(document.querySelectorAll('li').length).toBe(0);
   });
 });
