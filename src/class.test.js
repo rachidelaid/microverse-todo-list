@@ -133,7 +133,6 @@ describe('testing DOM manipulation functions', () => {
 
   it('the complete should be true after we click the checkbox', () => {
     document.querySelector('li .check').click();
-    console.log(tasks.list);
 
     expect(tasks.list[0].completed).toBeTruthy();
   });
