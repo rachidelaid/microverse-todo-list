@@ -1,12 +1,16 @@
 export default class Tasks {
-  constructor(storage) {
-    this.list = storage ? JSON.parse(storage) : [];
+  constructor() {
+    this.list = localStorage.getItem('tasks')
+      ? JSON.parse(localStorage.getItem('tasks'))
+      : [];
   }
 
   add(task) {
     task.index = this.list.length + 1;
     task.completed = false;
     this.list.push(task);
+
+    localStorage.setItem('tasks', JSON.stringify(this.list));
   }
 
   remove(index) {
@@ -17,14 +21,20 @@ export default class Tasks {
       }
       return t;
     });
+
+    localStorage.setItem('tasks', JSON.stringify(this.list));
   }
 
   edit(task) {
     this.list[task.index - 1] = task;
+
+    localStorage.setItem('tasks', JSON.stringify(this.list));
   }
 
   sort(oldIndex, newIndex) {
     this.list[oldIndex - 1].index = newIndex;
+
+    localStorage.setItem('tasks', JSON.stringify(this.list));
   }
 
   clearCompleted() {
@@ -34,5 +44,7 @@ export default class Tasks {
       t.index = i + 1;
       return t;
     });
+
+    localStorage.setItem('tasks', JSON.stringify(this.list));
   }
 }

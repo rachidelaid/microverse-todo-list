@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642581779418" clover="3.2.0">
-  <project timestamp="1642581779419" name="All files">
-    <metrics statements="16" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="11" coveredmethods="9" elements="31" coveredelements="24" complexity="0" loc="16" ncloc="16" packages="1" files="1" classes="1"/>
+<coverage generated="1642596700278" clover="3.2.0">
+  <project timestamp="1642596700278" name="All files">
+    <metrics statements="26" coveredstatements="21" conditionals="6" coveredconditionals="5" methods="16" coveredmethods="13" elements="48" coveredelements="39" complexity="0" loc="26" ncloc="26" packages="1" files="2" classes="2"/>
     <file name="class.js" path="D:\Microverse\todo-list\src\class.js">
-      <metrics statements="16" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="11" coveredmethods="9"/>
-      <line num="3" count="4" type="cond" truecount="1" falsecount="1"/>
-      <line num="7" count="6" type="stmt"/>
-      <line num="8" count="6" type="stmt"/>
-      <line num="9" count="6" type="stmt"/>
-      <line num="13" count="2" type="stmt"/>
-      <line num="14" count="1" type="stmt"/>
-      <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
-      <line num="16" count="1" type="stmt"/>
+      <metrics statements="21" coveredstatements="17" conditionals="4" coveredconditionals="3" methods="11" coveredmethods="9"/>
+      <line num="3" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="9" count="5" type="stmt"/>
+      <line num="10" count="5" type="stmt"/>
+      <line num="11" count="5" type="stmt"/>
+      <line num="13" count="5" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
       <line num="18" count="1" type="stmt"/>
-      <line num="23" count="4" type="stmt"/>
-      <line num="27" count="0" type="stmt"/>
-      <line num="31" count="1" type="stmt"/>
-      <line num="32" count="2" type="stmt"/>
-      <line num="33" count="1" type="stmt"/>
-      <line num="34" count="0" type="stmt"/>
+      <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="29" count="4" type="stmt"/>
+      <line num="31" count="4" type="stmt"/>
       <line num="35" count="0" type="stmt"/>
+      <line num="37" count="0" type="stmt"/>
+      <line num="41" count="1" type="stmt"/>
+      <line num="42" count="2" type="stmt"/>
+      <line num="43" count="1" type="stmt"/>
+      <line num="44" count="0" type="stmt"/>
+      <line num="45" count="0" type="stmt"/>
+      <line num="48" count="1" type="stmt"/>
+    </file>
+    <file name="local-storage-mock.js" path="D:\Microverse\todo-list\src\local-storage-mock.js">
+      <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="4"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="7" count="10" type="cond" truecount="2" falsecount="0"/>
+      <line num="11" count="11" type="stmt"/>
+      <line num="15" count="0" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

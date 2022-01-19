@@ -1,4 +1,7 @@
 import Tasks from './class';
+import LocalStorage from './local-storage-mock';
+
+global.localStorage = new LocalStorage();
 
 const tasks = new Tasks();
 
@@ -50,12 +53,10 @@ describe('testing completed tasks', () => {
 describe('testing clear all completed', () => {
   const tasks = new Tasks();
 
-  tasks.add({ description: 'task 1' });
   const firstTask = tasks.list[0];
   firstTask.completed = true;
   tasks.edit(firstTask);
 
-  tasks.add({ description: 'task 2' });
   const secondTask = tasks.list[1];
   secondTask.completed = true;
   tasks.edit(secondTask);
@@ -63,5 +64,19 @@ describe('testing clear all completed', () => {
   it('Checking if the list is empty', () => {
     tasks.clearCompleted();
     expect(tasks.list.length).toBe(0);
+  });
+});
+
+describe('testing localStorage', () => {
+  const tasks = new Tasks();
+
+  it('checking if local storage is empty after clear', () => {
+    localStorage.clear();
+    expect(localStorage.getItem('tasks')).toBeNull();
+  });
+
+  it('checking if local storage is not empty after adding', () => {
+    tasks.add({ description: 'task 1' });
+    expect(localStorage.getItem('tasks')).not.toBeNull();
   });
 });
