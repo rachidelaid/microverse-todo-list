@@ -56,6 +56,12 @@ npm run build
 - Twitter: [@rachidelaid1](https://twitter.com/rachidelaid1)
 - LinkedIn: [rachid elaid](https://www.linkedin.com/in/rachid-elaid-106336203/)
 
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
